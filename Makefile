@@ -9,3 +9,6 @@ in:
 
 in-db:
 	./vendor/bin/sail bash -c "php artisan tinker"
+
+reset-db-seed:
+	./vendor/bin/sail bash -c "php artisan migrate:fresh --seed"

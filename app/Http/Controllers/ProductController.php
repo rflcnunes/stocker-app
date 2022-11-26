@@ -40,4 +40,13 @@ class ProductController extends Controller
             'product' => $product
         ]);
     }
+
+    public function destroy($id)
+    {
+        $this->productService->delete($id);
+
+        return response()->json([
+            'message' => 'Product deleted successfully'
+        ]);
+    }
 }

@@ -33,4 +33,12 @@ class ProductRepository implements ProductRepositoryInterface
 
         return $product->toArray();
     }
+
+    public function delete($id)
+    {
+        $product = $this->model->find($id);
+        $product->delete();
+
+        return true;
+    }
 }

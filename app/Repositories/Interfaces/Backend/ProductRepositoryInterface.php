@@ -6,4 +6,5 @@ interface ProductRepositoryInterface
 {
     public function all(): array;
     public function create(array $data): array;
+    public function edit($id, array $data): array;
 }

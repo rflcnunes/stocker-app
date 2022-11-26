@@ -31,4 +31,13 @@ class ProductController extends Controller
             'product' => $product
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        $product = $this->productService->edit($id, $request->all());
+
+        return response()->json([
+            'product' => $product
+        ]);
+    }
 }

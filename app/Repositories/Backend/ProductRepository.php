@@ -25,4 +25,12 @@ class ProductRepository implements ProductRepositoryInterface
 
         return $product->toArray();
     }
+
+    public function edit($id, array $data): array
+    {
+        $product = $this->model->find($id);
+        $product->update($data);
+
+        return $product->toArray();
+    }
 }

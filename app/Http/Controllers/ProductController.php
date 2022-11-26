@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\Backend\ProductRepositoryInterface;
+use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -19,6 +20,15 @@ class ProductController extends Controller
         $products = $this->productService->all();
 
         return response()->json([
+            'products' => $products
+        ]);
+    }
+
+    public function indexToFrontEnd()
+    {
+        $products = $this->productService->all();
+
+        return Inertia::render('Products/Index', [
             'products' => $products
         ]);
     }

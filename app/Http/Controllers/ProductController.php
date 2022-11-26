@@ -22,4 +22,13 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $product = $this->productService->create($request->all());
+
+        return response()->json([
+            'product' => $product
+        ]);
+    }
 }

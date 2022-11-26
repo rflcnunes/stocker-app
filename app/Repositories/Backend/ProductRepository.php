@@ -14,8 +14,15 @@ class ProductRepository implements ProductRepositoryInterface
         $this->model = $model;
     }
 
-    public function all()
+    public function all(): array
     {
-        return $this->model->all();
+        return $this->model->all()->toArray();
+    }
+
+    public function create(array $data): array
+    {
+        $product = $this->model->create($data);
+
+        return $product->toArray();
     }
 }

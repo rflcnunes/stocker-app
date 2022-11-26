@@ -4,5 +4,6 @@ namespace App\Repositories\Interfaces\Backend;
 
 interface ProductRepositoryInterface
 {
-    public function all();
+    public function all(): array;
+    public function create(array $data): array;
 }

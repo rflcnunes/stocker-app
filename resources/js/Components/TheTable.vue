@@ -21,8 +21,8 @@
               </div>
             </template>
             <template #content>
-              <button class="dropdown-button" @click="editing = true">
-                Edit
+              <button class="dropdown-button" @click="deleteProduct(product.id)">
+                Delete
               </button>
             </template>
           </Dropdown>
@@ -49,7 +49,10 @@ export default {
     products: Array,
   },
   methods: {
-    //
+    deleteProduct(id) {
+      console.log(id);
+      this.$inertia.delete(`/api/product/${id}`);
+    }
   },
 };
 </script>

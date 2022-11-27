@@ -7,7 +7,9 @@
       </h2>
     </template>
     <template #action>
-      <button id="create-product-button-header">Create Product</button>
+      <button id="create-product-button-header" @click="createProduct()">
+        Create Product
+      </button>
     </template>
     <TheTable v-if="!mobile" v-bind:products="products" />
     <TheTableMobile v-if="mobile" v-bind:products="products" />
@@ -41,7 +43,9 @@ export default {
     this.mobile = window.innerWidth < 640;
   },
   methods: {
-    //
+    createProduct() {
+      this.$inertia.visit("/products/create");
+    },
   },
 };
 </script>

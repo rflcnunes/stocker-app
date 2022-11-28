@@ -34,20 +34,27 @@
         </td>
       </tr>
     </table>
+    <Toaster v-if="toast.show" :message="toast.message" position="top-right"/>
   </div>
 </template>
 
 <script>
 import Dropdown from "@/Components/Dropdown.vue";
+import Toaster from "@meforma/vue-toaster/src/Toaster.vue";
+import axios from "axios";
 
 export default {
   name: "TheTable",
   components: {
     Dropdown,
+    Toaster
   },
   data() {
     return {
-      //
+      toast: {
+        message: '',
+        show: false
+      }
     };
   },
   props: {
@@ -59,7 +66,23 @@ export default {
     },
     deleteProduct(id) {
       console.log(id);
-      this.$inertia.delete(`/api/product/${id}`);
+      // this.$inertia.delete(`/api/product/${id}`);
+
+      axios.delete(`/api/product/${id}`)
+        .then(response => {
+          console.log(response);
+          this.$inertia.reload();
+          this.openToast('Product Deleted');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      
+    },
+    openToast(message) {
+      this.toast.show = true;
+      this.toast.message = message;
     }
   },
 };

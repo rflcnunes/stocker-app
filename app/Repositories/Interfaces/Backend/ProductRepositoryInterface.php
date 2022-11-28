@@ -9,4 +9,5 @@ interface ProductRepositoryInterface
     public function create(array $data): array;
     public function edit($id, array $data): array;
     public function delete($id);
+    public function getAllProductsOrderByDesc(): array;
 }

@@ -46,4 +46,9 @@ class ProductRepository implements ProductRepositoryInterface
 
         return true;
     }
+
+    public function getAllProductsOrderByDesc(): array
+    {
+        return $this->model->orderBy('id', 'desc')->get()->toArray();
+    }
 }

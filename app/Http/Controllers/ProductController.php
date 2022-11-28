@@ -27,4 +27,13 @@ class ProductController extends Controller
     {
         return Inertia::render('Products/Create');
     }
+
+    public function edit($id)
+    {
+        $product = $this->productService->find($id);
+
+        return Inertia::render('Products/Edit', [
+            'product' => $product
+        ]);
+    }
 }

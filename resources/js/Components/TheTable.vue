@@ -21,9 +21,14 @@
               </div>
             </template>
             <template #content>
-              <button class="dropdown-button" @click="deleteProduct(product.id)">
-                Delete
-              </button>
+              <div id="options">
+                <button class="dropdown-button" @click="editProduct(product.id)">
+                  Edit
+                </button>
+                <button class="dropdown-button" @click="deleteProduct(product.id)">
+                  Delete
+                </button>
+              </div>
             </template>
           </Dropdown>
         </td>
@@ -49,6 +54,9 @@ export default {
     products: Array,
   },
   methods: {
+    editProduct(id) {
+      this.$inertia.visit(`/products/${id}/edit`);
+    },
     deleteProduct(id) {
       console.log(id);
       this.$inertia.delete(`/api/product/${id}`);
@@ -93,6 +101,23 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+    }
+
+    #options {
+      display: flex;
+      flex-direction: column;
+
+      .dropdown-button {
+        margin-bottom: 5px;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        padding: 5px;
+
+        &:hover {
+          background-color: rgb(17, 101, 246);
+        }
       }
     }
 

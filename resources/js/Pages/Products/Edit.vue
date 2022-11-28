@@ -84,7 +84,7 @@ export default {
         updatedProduct() {
             axios.put(`/api/product/${this.product.id}`, this.form)
                 .then((response) => {
-                    console.log(response);
+                    this.$inertia.visit(`/products/`);
                 })
                 .catch((error) => {
                     console.log(error);

@@ -25,7 +25,7 @@
                 <button class="dropdown-button" @click="editProduct(product.id)">
                   Edit
                 </button>
-                <button class="dropdown-button" @click="deleteProduct(product.id)">
+                <button class="dropdown-button" @click="deleteProduct(product.id, product.name)">
                   Delete
                 </button>
               </div>
@@ -34,7 +34,7 @@
         </td>
       </tr>
     </table>
-    <Toaster v-if="toast.show" :message="toast.message" position="top-right"/>
+    <Toaster v-if="toast.show" :message="toast.message" position="top-right" :queue="true" />
   </div>
 </template>
 
@@ -53,7 +53,8 @@ export default {
     return {
       toast: {
         message: '',
-        show: false
+        show: false,
+        duration: 3000,
       }
     };
   },
@@ -64,21 +65,21 @@ export default {
     editProduct(id) {
       this.$inertia.visit(`/products/${id}/edit`);
     },
-    deleteProduct(id) {
+    deleteProduct(id, name) {
       console.log(id);
       // this.$inertia.delete(`/api/product/${id}`);
 
       axios.delete(`/api/product/${id}`)
         .then(response => {
           console.log(response);
+          this.openToast(`Product ${name} deleted`);
           this.$inertia.reload();
-          this.openToast('Product Deleted');
         })
         .catch(error => {
           console.log(error);
         });
 
-      
+
     },
     openToast(message) {
       this.toast.show = true;

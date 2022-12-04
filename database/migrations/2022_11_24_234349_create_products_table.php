@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->integer('quantity')->default(0);
+            $table->decimal('price', 8, 2);
             $table->timestamps();
         });
     }

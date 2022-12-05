@@ -20,10 +20,7 @@
         <td class="font-semibold">{{ product.sku }}</td>
         <td class="font-semibold">{{ product.name }}</td>
         <td class="font-semibold">{{ product.price }}</td>
-        <td class="font-semibold">
-          <div id="circle"></div>
-          {{ product.category }}
-        </td>
+        <td class="font-semibold">{{ product.category }}</td>
         <td class="url text-slate-600">{{ product.description || "-" }}</td>
         <td class="text-slate-600">{{ product.quantity }}</td>
         <td>

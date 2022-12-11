@@ -5,7 +5,7 @@
     <AuthenticatedLayout>
         <div id="form">
             <div id="editable-row">
-                <h1 class="text-center">{{ product.name }}</h1>
+                <h1 v-once class="text-center">{{ product.name }}</h1>
 
                 <button @click="isEditable()">
                     <PencilIcon :class="{ 'editable-active': editable }" />
@@ -34,6 +34,19 @@
                 <TextInput id="quantity" class="input" type="number" :class="{ 'border-transparent': !editable }"
                     :disabled="!editable" v-model="form.quantity" />
             </div>
+
+            <div id="price" class="input-group">
+                <InputLabel for="price" value="Price" />
+                <TextInput id="price" class="input" type="number" :class="{ 'border-transparent': !editable }"
+                    :disabled="!editable" v-model="form.price" />
+            </div>
+
+            <div id="category" class="input-group">
+                <InputLabel for="category" value="Category" />
+                <TextInput id="category" class="input" type="text" :class="{ 'border-transparent': !editable }"
+                    :disabled="!editable" v-model="form.category" />
+            </div>
+
             <PrimaryButton :class="{ 'opacity-25': !editable }" :disabled="!editable" @click="updatedProduct()">
                 Save
             </PrimaryButton>
@@ -67,6 +80,8 @@ export default {
                 name: '',
                 description: '',
                 quantity: 0,
+                price: 0,
+                category: '',
             },
             editable: false,
         };

@@ -26,6 +26,16 @@
         <TextInput id="quantity" class="input" type="number" v-model="form.quantity" />
       </div>
 
+      <div id="price" class="input-group">
+        <InputLabel for="price" value="Price" />
+        <TextInput id="price" class="input" type="number" v-model="form.price" />
+      </div>
+
+      <div id="category" class="input-group">
+        <InputLabel for="category" value="Category" />
+        <TextInput id="category" class="input" type="text" v-model="form.category" />
+      </div>
+
       <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" @click="createProduct()">
         Register
       </PrimaryButton>
@@ -56,6 +66,8 @@ export default {
         name: '',
         description: '',
         quantity: 0,
+        price: 0,
+        category: '',
         processing: false,
       },
     };

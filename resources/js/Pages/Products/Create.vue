@@ -50,6 +50,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import axios from 'axios';
 
 export default {
   components: {
@@ -77,8 +78,14 @@ export default {
   },
   methods: {
     createProduct() {
-      this.$inertia.post('/api/product', this.form);
-      console.log(this.form);
+      axios.post('/api/product', this.form)
+        .then((response) => {
+          console.log(response);
+          this.$inertia.visit('/products');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
